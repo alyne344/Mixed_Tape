@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Michelle MJ Cowan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <title>Collaborative Playlist</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/normalize.css" />
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/custom_single.css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link href="https://fonts.googleapis.com/css?family=Schoolbell" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
+    <!-- link to firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
+</head>
+
+<body onload="mixed()">
+<!-- HEADER: LOGO AND NAV BAR -->
+  <div class="header">
+      <div id="logo-header">
+        <img src="./assets/images/mixedLogo_horiz.png" alt="logo" id="logo-header">
+      </div>
+
+
+      <div class="nav">
+        <nav>
+            <ul>
+
+              <li class="current">
+                    <a href="#one">What's Playing</a>
+                </li>
+                <li>
+                    <span>|</span>
+                </li>
+
+                <li class="current">
+
+                  <a href="#two" id="selectSongShow"><i class="fab fa-soundcloud"></i>&nbsp;&nbsp;&nbsp;Select Song</a>
+                </li>
+                <li>
+                    <span>|</span>
+                </li>
+                <li class="current">
+
+                  <a href="#sectionThree" id="playlistShow"><i class="fab fa-soundcloud" ></i>&nbsp;&nbsp;&nbsp;Playlist Library</a>
+                </li>
+            </ul>
+        </nav>
+
+      </div>
+
+  </div>
+
+  <section class="aboutSection">
+    <div id="about">
+      <h6>My <span style="color:#EB5342;">Mixed</span> Tape:<span style= "font-family: 'Architects Daughter', cursive;"> Collaborate with Friends to make a Playlist!</span></h6>
+    </div>
+  </section>
+<!-- END header -->
+
+<!-- list of users -->
+  <div class="sidebar">
+    <h6 style="color: white; text-align: center; border-top: solid; border-bottom: solid; background-color:#328680">Collaborators</h6>
+    <!-- contributor social profile card -->
+    <div class="chip">
+      <img src="./assets/images/avatar.png" alt="Person" width="96" height="96">
+      <ul>
+        <li>John Doe</li>
+        <li>More info</li>
+      </ul>
+    </div>
+    <div class="chip">
+      <img src="./assets/images/avatar.png" alt="Person" width="96" height="96">
+      <ul>
+        <li>John Doe</li>
+        <li>More info</li>
+      </ul>
+    </div>
+    <div class="chip">
+      <img src="./assets/images/avatar.png" alt="Person" width="96" height="96">
+      <ul>
+        <li>John Doe</li>
+        <li>More info</li>
+      </ul>
+    </div>
+    <div class="chip">
+      <img src="./assets/images/avatar.png" alt="Person" width="96" height="96">
+      <ul>
+        <li>John Doe</li>
+        <li>More info</li>
+      </ul>
+    </div>
+
+  </div>
+<!-- END sidebar -->
+
+<section class="main">
+
+
+  <!-- Flow area 1a: left column of section: Playlist Available and Create New Playlist -->
+<section class="sectionOne" id="one">
+
+<!-- BEGIN "WHAT'S PLAYING AREA"-->
+<div class="main_body">
+  <!-- =============================================== -->
+ <!-- HEADLINE for Available Playlists cards-->
+   <div class="playlist_section" id="createPlaylist" style="padding: 10px">
+    <h3 style="text-align: center;"><span class="step">Step<span class="stepNumber">1</span></span>:<span id="action">Create</span> New <span style="color: #ef4e3d">MIXED</span> Tape</h3>
+      <form id="inputSet">
+          <input class="w3-input w3-border w3-round" type="text" id="inputST" placeholder="Name your Playlist">
+        <button class="w3-btn w3-round-large w3-teal" type="button" id="createSet">Add Playlist!</button>
+      </form>
+    </div>
+
+
+<div class="playlistCards">
+ <div class="leftColumn">
+     <div class="leftColumnHeader">
+      <h3 style="text-align: center;"><span class="step">Ne<span class="stepNumber">x</span>t</span>:<span id="action">Select</span> Your <span style="color: #ef4e3d">MIXED</span> Tape</h3>
+   </div>
+ <!-- <div class="flex"> -->
+   <div id="loadPlaylist">
+             <!-- PLAYLIST CARDS display area -->
+   </div>
+
+
+ </div>
+
+</div>
+
+  </div>
+
+  <!-- END main-body -->
+<!-- =============================================== -->
+<!-- BEGIN SELECT SONG AREA -->
+<section class="songArea">
+  <div class="currentMusicList">
+
+      <h3>My <b style="color:#ef4e3d">MIXED</b> Playlist:&nbsp;<span id="playlistTitle"></span></h3>
+      <table class="table" id="currentPlaylist">
+
+        <tr>
+          <th></th>
+          <th>SONG</th>
+          <th>ARTIST</th>
+          <th>CONTRIBUTOR</th>
+          <th>COMMENTS</th>
+          <th></th>
+        </tr>
+
+      </table>
+    <!-- #noPlaylist line 59 & 125 -->
+    <div class="playlist_section">
+
+          <!-- ZACK CREATE??<p>Playlists Available:
+          </p> -->
+    </div>
+
+  </div>
+</section>
+<!-- =================================================== -->
+<section class="selectSongArea">
+  <div class="main_library">
+
+
+
+
+    <!-- insert Library page-->
+
+      <div id="headline">
+         <a href="#sectionThree" id="backButton"><- Back to Step 1</a><br>
+        <h3 style="text-align: center;"><span class="step">Step<span class="stepNumber">2</span></span>:<span id="action">Add</span> a Song!</h3>
+      </div>
+
+    <!-- Step 1 Pick a song -->
+    <div class="library">
+
+      <div class="stepSeach">
+        <h4><i class="fa fa-chevron-right"  aria-hidden="true"></i>&nbsp;&nbsp;<span id="action">Search</span> for your song!</h4>
+        <div class="search-container">
+          <form action="  ">
+          <input type="text" placeholder="Search.." name="search" id="inputST1">
+          <button type="submit" id="search"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+        <!-- Step 1 Pick a song -->
+
+        <div class="stepOne">
+
+          <table id="songTable">
+          <!-- to make cells clickable, need <a>. Can tie hover,click event in jquery -->
+          <tr>
+                <th>Song Name</th>
+                <th>Artist/User</th>
+          </tr>
+
+          </table>
+        </div>
+      </div>
+
+
+  </div>
+</section>
+    <div  class="selectAddArea" id="stepTwoContainer">
+
+
+      <!-- Step 2 Add song to Playlist -->
+    <h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;<span id="action">Add</span> your song!</h4>
+
+    <div class="stepTwo">
+
+      <form id="addSongForm">
+          <!-- Your song populates from library click selection above -->
+          <label style="font-weight: bold;">Your song:</label>
+          <div id="yourSong" style="font-family: 'Architects Daughter', cursive; font-size: 20px;"></div>
+          <!-- <input class="w3-input w3-border w3-round" type="text"> -->
+          <!-- Your name populates from user login?? or typed by user -->
+          <label style="font-weight: bold;">Your name:</label>
+          <input class="w3-input w3-border w3-round" type="text" id="nameInput">
+          <label style="font-weight: bold;">Comment (optional):</label>
+          <input class="w3-input w3-border w3-round" type="text" id="userComment">
+          <button class="w3-btn w3-round-large w3-teal" type="button" id="addSong">Add Song!</button>
+
+      </form>
+
+    </div>
+
+
+</div>
+  <!-- end Library class div -->
+</div>
+
+<!-- Section 3 Playlist array page -->
+
+
+    <!-- Music art and playback -->
+    <section class="container">
+
+
+    </section>
+
+
+
+
+</section><!-- end main section -->
+
+
+
+<!-- <div class="footer">
+
+
+
+</div> -->
+<!-- do we want to use this old veresion of jquery? do we have to? -->
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<!-- <script src="./assets/javascript/coverflow-slideshow.js"></script> -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+<!-- link to soundcloud JS sdk -->
+<script src="https://connect.soundcloud.com/sdk/sdk-3.3.0.js"></script>
+<!-- link to soundcloud widget scirpt -->
+<script type="text/javascript" src="./assets/javascript/api.js"></script>
+<!-- link to custom js -->
+<script type="text/javascript" src="./assets/javascript/soundcloud.js"></script>
+
+</body>
+
+</html>
